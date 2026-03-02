@@ -1,0 +1,111 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: intellik8sbot
+  namespace: intellik8sbot
+  labels:
+    app.kubernetes.io/name: intellik8sbot
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: intellik8sbot-reader
+  labels:
+    app.kubernetes.io/name: intellik8sbot
+rules:
+  # Read access to most resources
+  - apiGroups: [""]
+    resources:
+      - pods
+      - pods/log
+      - services
+      - endpoints
+      - nodes
+      - namespaces
+      - events
+      - configmaps
+      - secrets
+      - persistentvolumes
+      - persistentvolumeclaims
+      - resourcequotas
+      - limitranges
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources:
+      - deployments
+      - daemonsets
+      - replicasets
+      - statefulsets
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["batch"]
+    resources:
+      - jobs
+      - cronjobs
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["networking.k8s.io"]
+    resources:
+      - ingresses
+      - networkpolicies
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["autoscaling"]
+    resources:
+      - horizontalpodautoscalers
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["policy"]
+    resources:
+      - poddisruptionbudgets
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["metrics.k8s.io"]
+    resources:
+      - pods
+      - nodes
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: intellik8sbot-operator
+  labels:
+    app.kubernetes.io/name: intellik8sbot
+rules:
+  # Write access for operational tasks (optional, enable with caution)
+  - apiGroups: ["apps"]
+    resources:
+      - deployments
+      - deployments/scale
+    verbs: ["patch", "update"]
+  - apiGroups: [""]
+    resources:
+      - pods
+    verbs: ["delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: intellik8sbot-reader-binding
+  labels:
+    app.kubernetes.io/name: intellik8sbot
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: intellik8sbot-reader
+subjects:
+  - kind: ServiceAccount
+    name: intellik8sbot
+    namespace: intellik8sbot
+---
+# Uncomment below to enable write operations
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRoleBinding
+# metadata:
+#   name: intellik8sbot-operator-binding
+#   labels:
+#     app.kubernetes.io/name: intellik8sbot
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: ClusterRole
+#   name: intellik8sbot-operator
+# subjects:
+#   - kind: ServiceAccount
+#     name: intellik8sbot
+#     namespace: intellik8sbot

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: intellik8sbot
+  labels:
+    app.kubernetes.io/name: intellik8sbot
+    app.kubernetes.io/component: ai-assistant

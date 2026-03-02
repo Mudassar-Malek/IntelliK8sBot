@@ -1,0 +1,42 @@
+# IntelliK8sBot - AI-Powered Kubernetes Management Bot
+# Core Dependencies
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+
+# Kubernetes Client
+kubernetes>=29.0.0
+
+# AI/LLM Integration
+openai>=1.12.0
+
+# HTTP Client
+httpx>=0.26.0
+aiohttp>=3.9.0
+
+# Configuration & Environment
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# Database (for conversation history)
+sqlalchemy>=2.0.0
+aiosqlite>=0.19.0
+
+# CLI Interface
+typer>=0.9.0
+rich>=13.0.0
+
+# Logging & Monitoring
+structlog>=24.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.0.0
+
+# Utilities
+pyyaml>=6.0.0
+jinja2>=3.1.0
