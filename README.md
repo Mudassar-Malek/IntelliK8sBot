@@ -130,7 +130,7 @@ If you're in a hurry, here's the fastest way to get started:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/IntelliK8sBot.git
+git clone https://github.com/Mudassar-Malek/IntelliK8sBot.git
 cd IntelliK8sBot
 
 # 2. Create virtual environment
