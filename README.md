@@ -159,7 +159,7 @@ That's it! The bot is now running in **basic mode** (without AI). For AI-powered
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/IntelliK8sBot.git
+git clone https://github.com/Mudassar-Malek/IntelliK8sBot.git
 cd IntelliK8sBot
 ```
 
@@ -681,7 +681,7 @@ Contributions are welcome! Here's how to get started:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/IntelliK8sBot.git
+git clone https://github.com/Mudassar-Malek/IntelliK8sBot.git
 cd IntelliK8sBot
 
 # Create branch
